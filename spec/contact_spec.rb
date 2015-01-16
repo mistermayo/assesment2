@@ -41,7 +41,7 @@ describe(".clear") do
     end
   end
 
- describe(".find") do
+  describe(".find") do
     it("returns a contact by the persons name") do
       test_contact1 = Contact.new({ :name => "Bill", :number => 4154105984 })
       test_contact1.save()
@@ -49,4 +49,4 @@ describe(".clear") do
       test_contact2.save()
       expect(Contact.find("Bill")).to(eq([test_contact1]))
     end
-end
+  end

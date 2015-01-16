@@ -1,0 +1,16 @@
+<h1>Contacts</h1>
+
+<h3>Add a contact</h3>
+
+
+<form action="/phone" method="post">
+  <label for='name'>Dealership's name:</label>
+  <input id='name' name='name' type='text'>
+  <button type="submit">Add Dealership</button>
+</form>
+
+<ul>
+  <% @phones.each() do |phone| %>
+    <li><a href="/phone/<%= phone.id() %>"><%= phone.name() %></a></li>
+  <% end %>
+</ul>
