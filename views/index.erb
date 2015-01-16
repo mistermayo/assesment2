@@ -14,3 +14,10 @@
     <li><a href="/phone/<%= phone.id() %>"><%= phone.name() %></a></li>
   <% end %>
 </ul>
+
+<h4>Here are the vehicles on this lot: </h4>
+<ul>
+  <% @contacts.each() do |contact| %>
+    <li><a href="/contact/<%= contact.id() %>"><%= contact.model() %></a></li>
+  <% end %>
+</ul>

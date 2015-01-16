@@ -11,20 +11,19 @@ get('/') do
 end
 
 post('/phone') do
-  name = params.fetch('contacts')
+  name = params.fetch('name')
   Phone.new(name).save()
   @phone = Phone.all()
   erb(:index)
 end
 
-post('/vehicles') do
+post('/contact') do
   name = params.fetch('name')
   number = params.fetch('number')
-  # year = params.fetch('year')
   @contact = Contact.new(name, number)
   @contact.save()
   @phone = Phone.find(params.fetch('phone_id').to_i())
-  @phone.add_vehicle(@vehicle)
+  @phone.add_number(@contact)
   erb(:phone)
 end
 
