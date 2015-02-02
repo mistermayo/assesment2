@@ -1,48 +1,62 @@
-# require('rspec')
-# require('phone')
-# require('contact')
-#
-# describe(Phone) do
-#   before() do
-#     Phone.clear()
-#   end
-# end
-#
-#   describe('#add_number') do
-#     it("adds a new number to the contact") do
-#       test_contact = Contact.new({ :name => "Bill", :number => 4154105984 })
-#       new_number = (55454)
-#       test_contact.merge(new_number)
-#       test_contact.save()
-#       expect(test_contact.add_number()).to(eq([test_contact]))
-#     end
-#   end
-#
-#   describe('#id') do
-#     it("returns the id of the ") do
-#       test_dealership = Dealership.new("Bob's Used Cars")
-#       expect(test_dealership.id()).to(eq(1))
-#     end
-#   end
-#
-#     describe("#save") do
-#     it("adds a phone number to the array of saved contacts") do
-#       test_phone = Phone.new({ :name => "Bill", :number => 4154105984 })
-#       test_phone.save()
-#       expect(Phone.all()).to(eq([test_phone]))
-#     end
-#   end
-#
-#   describe(".all") do
-#     it("is empty at first") do
-#       expect(Phone.all()).to(eq([]))
-#     end
-#   end
-#
-#   describe(".clear") do
-#     it("empties out all of the saved contacts") do
-#       Phone.new({ :name => "Bill", :number => 4154105984 }).save()
-#       Phone.clear()
-#       expect(Phone.all()).to(eq([]))
-#     end
-#   end
+require('rspec')
+require('phone')
+require('contact')
+
+describe(Phone) do
+  before() do
+    Phone.clear()
+  end
+end
+
+  describe('#type') do
+    it('returns the type of contact') do
+      test_type = Phone.new({:type => 'home', :number => 7075559955})
+      expect(test_type.type()).to(eq('home'))
+    end
+  end
+
+  describe('#number') do
+    it('returns the new number') do
+      test_type = Phone.new({:type => 'home', :number => 7075559955})
+      expect(test_type.number()).to(eq(7075559955))
+    end
+  end
+
+  describe('#id') do
+    it("returns the id of the contact") do
+      test_type = Phone.new({:type => 'home', :number => 7075559955})
+      expect(test_type.id()).to(eq(1))
+    end
+  end
+
+  describe(".all") do
+    it("is empty at first") do
+      expect(Phone.all()).to(eq([]))
+    end
+  end
+
+  describe(".clear") do
+    it("empties out all of the saved contacts") do
+      Phone.new({:type => 'home', :number => 7075559955}).save()
+      Phone.clear()
+      expect(Phone.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it('adds a contact to the list of saved contacts') do
+      test_type = Phone.new({:type => 'home', :number => 7075559955})
+      test_type.save()
+      expect(Phone.all()).to(eq([test_type]))
+    end
+  end
+
+  describe('.find') do
+    it('returns a contact by a given id number') do
+      test_type = Phone.new({:type => 'home', :number => 7075559955})
+      test_type.save()
+      test_type2 = Phone.new({:type => 'home', :number => 7075559955})
+      test_type2.save()
+      expect(Phone.find(test_type.id())).to(eq(test_type))
+    end
+  end
