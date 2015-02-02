@@ -1,23 +1,18 @@
-<h1>Contacts</h1>
+<h1>Saved contacts</h1>
+<ul>
+  <% @contacts.each() do |contact| %>
+  <li><a href="/contacts/<%= contact.id() %>"><%= contact.name() %></a></li>
+  <% end %>
+</ul>
+
+
+<h2>Phonebook</h2>
 
 <h3>Add a contact</h3>
 
 
-<form action="/phone" method="post">
-  <label for='name'>Dealership's name:</label>
+<form action="/contacts" method="post">
+  <label for='name'>Contact's name:</label>
   <input id='name' name='name' type='text'>
-  <button type="submit">Add Dealership</button>
+  <button type="submit">Add contact here! </button>
 </form>
-
-<ul>
-  <% @phones.each() do |phone| %>
-    <li><a href="/phone/<%= phone.id() %>"><%= phone.name() %></a></li>
-  <% end %>
-</ul>
-
-<h4>Here are the vehicles on this lot: </h4>
-<ul>
-  <% @contacts.each() do |contact| %>
-    <li><a href="/contact/<%= contact.id() %>"><%= contact.model() %></a></li>
-  <% end %>
-</ul>

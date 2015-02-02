@@ -1,4 +1,24 @@
-<h1><%= @contact.name() %></h1>
-<h1><%= @contact.number() %></h1>
+<h2>Add a number to your contact <span class="contact-name"><%= @contact.name() %></span></h2>
 
-<a href="/">Return to Main Page</a>
+<form action="/phone" method="post">
+  <input id="contact_id" name="contact_id" type="hidden" value="<%= @contact.id() %>">
+  <div class="form-group">
+    <label for="type"></label>
+    <input id="type" name="type" type='text' placeholder="Number Type" autofocus>
+  </div>
+  <div class="form-group">
+    <label for="number"></label>
+    <input id="number" name="number" type="text" placeholder="Number 415*410*5984">
+  </div>
+  <button type="submit" class="butt">Add Number</button>
+</form>
+
+<hr>
+
+<ul>
+  <% @contact.numbers().each() do |number| %>
+  <li><span class="new_number-type"><%= number.type() %></span>: <span class="new_number"><%= number.number() %></span></li>
+  <% end %>
+</ul>
+
+<a href="/">Return to main page</a>
